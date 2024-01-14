@@ -28,9 +28,9 @@ class _ToDoPageState extends State<ToDoPage> {
       appBar: AppBar(
         title: Text("TaskMaster"),
         elevation: 0,
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.white,
       ),
-      backgroundColor: Colors.purple[200],
+      backgroundColor: Colors.white,
       body: ListView.builder(
         itemCount: ToDo.length,
         itemBuilder: (context, index) {
