@@ -87,7 +87,7 @@ class _ToDoPageState extends State<ToDoPage> {
       appBar: AppBar(
         title: Text("TaskMaster"),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.red.shade400,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -95,7 +95,7 @@ class _ToDoPageState extends State<ToDoPage> {
         },
         child: Icon(Icons.add),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.red.shade400,
       body: ListView.builder(
         itemCount: db.ToDo.length,
         itemBuilder: (context, index) {
