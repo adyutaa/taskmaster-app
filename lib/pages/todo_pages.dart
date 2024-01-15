@@ -32,7 +32,9 @@ class _ToDoPageState extends State<ToDoPage> {
     setState(() {
       // save to Todo list
       ToDo.add([_controller.text, false]);
+      _controller.clear();
     });
+    Navigator.of(context).pop();
   }
 
   // method to create new task
