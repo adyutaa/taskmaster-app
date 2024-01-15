@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskmaster_app/util/dialog_box.dart';
 import 'package:taskmaster_app/util/todo_tile.dart';
 
 class ToDoPage extends StatefulWidget {
@@ -9,6 +10,11 @@ class ToDoPage extends StatefulWidget {
 }
 
 class _ToDoPageState extends State<ToDoPage> {
+  // text controller
+  final _controller = TextEditingController();
+
+  //save new tasks
+
   // list of todo tasks
   List ToDo = [
     ["Attend GDSC Grand Meeting", false],
@@ -22,6 +28,26 @@ class _ToDoPageState extends State<ToDoPage> {
     });
   }
 
+  void saveNewTasks() {
+    setState(() {
+      // save to Todo list
+      ToDo.add([_controller.text, false]);
+    });
+  }
+
+  // method to create new task
+  void createNewTask() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return DialogBox(
+            controller: _controller,
+            onSave: saveNewTasks,
+            onCancel: () => Navigator.of(context).pop(),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +55,12 @@ class _ToDoPageState extends State<ToDoPage> {
         title: Text("TaskMaster"),
         elevation: 0,
         backgroundColor: Colors.white,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          createNewTask();
+        },
+        child: Icon(Icons.add),
       ),
       backgroundColor: Colors.white,
       body: ListView.builder(

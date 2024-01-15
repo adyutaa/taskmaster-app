@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class ToDoTile extends StatelessWidget {
@@ -17,7 +19,7 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.only(left: 25, top: 25, right: 25),
       child: Container(
         padding: EdgeInsets.all(25),
         decoration: BoxDecoration(
@@ -28,9 +30,11 @@ class ToDoTile extends StatelessWidget {
             style: BorderStyle.solid
           ),
           boxShadow: [
+            // ignore: prefer_const_constructors
             BoxShadow(
               color: Colors.black,
               spreadRadius: 3.2,
+              // ignore: prefer_const_constructors
               offset: Offset(3.2, 7),
 
             )
@@ -39,7 +43,10 @@ class ToDoTile extends StatelessWidget {
         child: Row(
           children: [
             Checkbox(value: taskCompleted, onChanged: onChanged, activeColor: Colors.black87,),
-            Text(taskName),
+            Text(taskName,
+            style: TextStyle(
+            decoration: taskCompleted ? TextDecoration.lineThrough : TextDecoration.none),
+            ),
           ],
         ),
       ),
